@@ -238,7 +238,13 @@ class App extends React.Component {
   }
 
   moveCurrentTetrominoRight() {
+    const proposedPosition = this.getCurrentCoordinates().map( ({row,col}) => ({row, col: col + 1}));
 
+    if (this.isTetrominoSpaceFree(proposedPosition)) {
+      this.setState({
+        colIndex: this.state.colIndex + 1
+      })
+    }
   }
 
   render() {
