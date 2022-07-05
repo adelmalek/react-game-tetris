@@ -1,0 +1,66 @@
+:root {
+    --cyan: #81ffff;
+    --blue: #8181ff;
+    --orange: #ffc481;
+    --yellow: #ffff81;
+    --green: #81ff81;
+    --purple: #ff81ff;
+    --red: #ff8181;
+}
+
+.tetromino-square {
+    box-sizing: border-box;
+    display: inline-block;
+    width: 3.5vh;
+    height: 3.5vh;
+    border-radius: 1px;
+    border-width: 2px;
+    border-style: outset;
+}
+
+.tetromino-square.I {
+    background-color: var(--cyan);
+    border-color: var(--cyan);
+}
+
+.tetromino-square.J {
+    background-color: var(--blue);
+    border-color: var(--blue);
+}
+
+.tetromino-square.L {
+    background-color: var(--orange);
+    border-color: var(--orange);
+}
+
+.tetromino-square.O {
+    background-color: var(--yellow);
+    border-color: var(--yellow);
+}
+
+.tetromino-square.S {
+    background-color: var(--green);
+    border-color: var(--green);
+}
+
+.tetromino-square.T {
+    background-color: var(--purple);
+    border-color: var(--purple);
+}
+
+.tetromino-square.Z {
+    background-color: var(--red);
+    border-color: var(--red);
+}
+
+.tetromino-square.empty {
+    border:none;
+}
+
+@media screen and (min-width:768px) {
+    .tetromino-square {
+        width: 4.25vh;
+        height: 4.25vh;
+    }
+}
+

@@ -85,11 +85,24 @@ class App extends React.Component {
     return coordinates;
   }
 
+  getBoardContent() {
+    const deepClone = (x) => JSON.parse(JSON.stringify(x));
+    const dynamicBoard = deepClone(this.state.board);
+
+    if (this.state.gameStarted && !this.state.gameOver) {
+      for (let {row, col} of this.getCurrentCoordinates()) {
+        dynamicBoard[row][col] = this.state.currentShape;
+      }
+    }
+
+    return dynamicBoard;
+  }
+
   render() {
     return (
       <div className="App">
         <h1 className='header'>Tetris {this.state.gameOver? '(GAME OVER)' :  ''}</h1>
-        <GameBoard board={this.state.board}/>
+        <GameBoard board={this.getBoardContent()}/>
         <Options onStart={this.startGame} onPause={this.togglePause}/>
         <GameStats />
         <Score score={this.state.score}/>
