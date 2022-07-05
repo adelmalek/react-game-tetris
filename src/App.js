@@ -6,12 +6,20 @@ import GameStats from './Components/GameStats/GameStats';
 import Options from './Components/Options/Options';
 import Score from './Components/Score/Score';
 
+const BOARD_HEIGHT = 20;
+const BOARD_WIDTH = 10;
+
 class App extends React.Component {
+  createEmptyBoard() {
+    return new Array(BOARD_HEIGHT).fill(null).map( (_) => new Array(BOARD_WIDTH).fill(null));
+  }
+
   state = {
     gameStarted: false,
     gameOver: false,
     paused: false,
-    score: 0
+    score: 0,
+    board: this.createEmptyBoard()
   }
 
   startGame = () => {
@@ -33,7 +41,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <h1 className='header'>Tetris</h1>
-        <GameBoard />
+        <GameBoard board={this.state.board}/>
         <Options onStart={this.startGame} onPause={this.togglePause}/>
         <GameStats />
         <Score score={this.state.score}/>
