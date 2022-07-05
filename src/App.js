@@ -159,8 +159,19 @@ class App extends React.Component {
     return board;
   }
 
-  rotateCurrentTetromino() {
+  isTetrominoSpaceFree(positionList, board=this.state.board) {
+    return positionList.every( ({row, col}) => 
+      row >= 0 && row <= BOARD_HEIGHT -1 && col >= 0 && col <= BOARD_WIDTH - 1 && board[row][col] === null );
+  }
 
+  rotateCurrentTetromino() {
+    const proposedPosition = this.getCurrentCoordinates(1);
+
+    if (this.isTetrominoSpaceFree(proposedPosition)) {
+      this.setState({
+        currentRotationIndex: this.state.currentRotationIndex + 1
+      })
+    }
   }
 
   moveCurrentTetrominoDown() {
