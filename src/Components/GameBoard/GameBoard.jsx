@@ -13,7 +13,7 @@ export default class GameBoard extends Component {
       for (let j = 0; j < row.length; j++) {
         const cell = row[j];
         JSXrow.push(
-          <Square shapeColor={cell} hasBorder={true} key={cell +j} />
+          <Square shapeColor={cell} hasBorder={!this.props.hideBorders} key={cell +j} />
         )
       }
       JSXboard.push(

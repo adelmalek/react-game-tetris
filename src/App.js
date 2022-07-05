@@ -98,13 +98,26 @@ class App extends React.Component {
     return dynamicBoard;
   }
 
+  getNextItemContent() {
+    const board = new Array(3).fill(null).map( (_) => new Array(4).fill(0));
+    const coordinates = this.getCurrentCoordinates(0, this.state.nextShape, 0, 0, 0);
+
+    if (this.state.gameStarted && !this.state.gameOver) {
+      for (let {row, col} of coordinates) {
+        board[row][col] = this.state.nextShape;
+      }
+    }
+
+    return board;
+  }
+
   render() {
     return (
       <div className="App">
         <h1 className='header'>Tetris {this.state.gameOver? '(GAME OVER)' :  ''}</h1>
         <GameBoard board={this.getBoardContent()}/>
         <Options onStart={this.startGame} onPause={this.togglePause}/>
-        <GameStats />
+        <GameStats board={this.getNextItemContent()}/>
         <Score score={this.state.score}/>
       </div>
     );
