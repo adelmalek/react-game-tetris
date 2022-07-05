@@ -33,7 +33,8 @@ class App extends React.Component {
     rowIndex: 0,
     colIndex: 4,
     currentShape: null,
-    nextShape: null
+    nextShape: null,
+    intervalId: null
   }
 
   componentDidMount() {
@@ -85,6 +86,18 @@ class App extends React.Component {
   }
 
   startGame = () => {
+    let newIntervalId = this.state.intervalId;
+
+    const step = () => {
+      if (!this.state.paused) {
+        this.moveCurrentTetrominoDown();
+      }
+    }
+
+    if (this.state.intervalId === null) {
+      newIntervalId = setInterval(step, 1000)
+    }
+
     this.setState({
       gameStarted: true,
       gameOver: false,
@@ -95,7 +108,8 @@ class App extends React.Component {
       colIndex: 4,
       board: this.createEmptyBoard(),
       currentShape: this.getRandomTetrominoShape(),
-      nextShape: this.getRandomTetrominoShape()
+      nextShape: this.getRandomTetrominoShape(),
+      intervalId: newIntervalId
     })
   }
 
@@ -202,6 +216,10 @@ class App extends React.Component {
 
     const gameover = this.isGameOver(newBoard);
 
+    if (gameover) {
+      clearInterval(this.state.intervalId);
+    }
+ 
     this.setState({
       gameOver: gameover,
       board: newBoard,
@@ -210,7 +228,8 @@ class App extends React.Component {
       currentRotationIndex: 0,
       currentShape: this.state.nextShape,
       nextShape: this.getRandomTetrominoShape(),
-      score: this.state.score + scoreIncrement
+      score: this.state.score + scoreIncrement,
+      intervalId: gameover? null : this.state.intervalId
     })
   }
 
