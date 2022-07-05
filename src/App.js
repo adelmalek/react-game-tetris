@@ -10,6 +10,7 @@ import TETROMINO_SHAPES from './Constans/tetrominos';
 
 const BOARD_HEIGHT = 20;
 const BOARD_WIDTH = 10;
+const SCORE_INCREMENTS = [0, 1, 3, 6, 10];
 
 class App extends React.Component {
   createEmptyBoard() {
@@ -174,8 +175,56 @@ class App extends React.Component {
     }
   }
 
-  moveCurrentTetrominoDown() {
+  clearFullRows(board) {
+    const isRowNotFull = (row) => !row.every( (x) => typeof x === 'string');
+    board = board.filter(isRowNotFull);
+    const scoreIndex = BOARD_HEIGHT - board.length;
+    while (board.length < BOARD_HEIGHT) {
+      board.unshift(new Array(BOARD_WIDTH).fill(null));
+    }
+    return [board, SCORE_INCREMENTS[scoreIndex]];
+  }
 
+  isGameOver(board) {
+    const coordinates = this.getCurrentCoordinates(0, this.state.nextShape, 0, 0, 4);
+    return !this.isTetrominoSpaceFree(coordinates, board)
+  }
+
+  finalizeTetrominoPosition(currentPosition) {
+    let newBoard = JSON.parse(JSON.stringify(this.state.board));
+    let scoreIncrement = 0;
+
+    for (let {row, col} of currentPosition) {
+      newBoard[row][col] = this.state.currentShape
+    }
+
+    [newBoard, scoreIncrement] = this.clearFullRows(newBoard);
+
+    const gameover = this.isGameOver(newBoard);
+
+    this.setState({
+      gameOver: gameover,
+      board: newBoard,
+      rowIndex: 0,
+      colIndex: 4,
+      currentRotationIndex: 0,
+      currentShape: this.state.nextShape,
+      nextShape: this.getRandomTetrominoShape(),
+      score: this.state.score + scoreIncrement
+    })
+  }
+
+  moveCurrentTetrominoDown() {
+    const currentCoordinates = this.getCurrentCoordinates();
+    const proposedPosition = currentCoordinates.map(({row, col}) => ({row: row + 1, col}));
+
+    if (this.isTetrominoSpaceFree(proposedPosition)) {
+      this.setState({
+        rowIndex: this.state.rowIndex + 1
+      })
+    } else {
+      this.finalizeTetrominoPosition(currentCoordinates)
+    }
   }
 
   moveCurrentTetrominoLeft() {
