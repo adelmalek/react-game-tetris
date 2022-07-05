@@ -5,8 +5,8 @@ export default class Options extends Component {
   render() {
     return (
       <div className='options'>
-        <button>Start Game</button>
-        <button>Pause</button>
+        <button onClick={this.props.onStart}>Start Game</button>
+        <button onClick={this.props.onPause}>Pause</button>
       </div>
     )
   }
