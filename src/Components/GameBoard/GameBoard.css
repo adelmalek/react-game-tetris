@@ -1,0 +1,18 @@
+.game-board {
+    background-color: darkslateblue;
+    color: whitesmoke;
+    grid-area: game-board;
+}
+  
+.row {
+    height: 3.5vh;
+    margin: 0 auto;
+    width: 35vh;
+}
+
+@media screen and (min-width: 768px) {
+    .row {
+        height: 4.25vh;
+        width: 42.5vh;
+    }
+}

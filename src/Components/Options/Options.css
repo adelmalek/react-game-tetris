@@ -1,0 +1,34 @@
+.options {
+    grid-area: options;
+}
+
+button {
+    width: 110px;
+    padding: 10px;
+    margin: 6px;
+    text-align: center;
+    font-weight: 700;
+    cursor: pointer;
+    display: inline-block;
+    background-color: transparent;
+    -webkit-transition: all 0.25s ease-in-out;
+    transition: all 0.25s ease-in-out;
+}
+
+.start-button {
+    border: 3px solid lightskyblue;
+    color: lightskyblue;
+}
+
+.start-button:hover {
+    box-shadow: 0 0 10px 0 lightskyblue inset, 0 0 20px 2px lightskyblue;
+}
+
+.pause-button {
+    border: 3px solid gold;
+    color: gold;
+}
+
+.pause-button:hover {
+    box-shadow: 0 0 10px 0 gold inset, 0 0 20px 2px gold;
+}
