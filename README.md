@@ -10,5 +10,5 @@
 
 The entire programme design and implementation process is based on Programozás Karrier (https://programozaskarrier.hu) documentation.
 
-Link: https://geradele.github.io/react-game-tetris/
+Link: https://adelmalek.github.io/react-game-tetris/
 
