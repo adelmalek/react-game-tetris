@@ -38,30 +38,6 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    document.removeEventListener('keydown', (e) => {
-      if (!this.state.gameStarted || this.state.gameOver || this.state.paused) {
-        return;
-      }
-
-      if (e.key === 'ArrowUp') {
-        this.rotateCurrentTetromino();
-      }
-
-      if (e.key === 'ArrowDown') {
-        this.moveCurrentTetrominoDown();
-      }
-
-      if (e.key === 'ArrowLeft') {
-        this.moveCurrentTetrominoLeft();
-      }
-
-      if (e.key === 'ArrowRight') {
-        this.moveCurrentTetrominoRight();
-      }
-     })
-  }
-
-  componentWillUnmount() {
     document.addEventListener('keydown', (e) => {
       if (!this.state.gameStarted || this.state.gameOver || this.state.paused) {
         return;
