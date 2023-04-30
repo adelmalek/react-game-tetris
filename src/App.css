@@ -2,27 +2,32 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Audiowide', cursive;
 }
 
 body {
-  background-color: rgb(45, 45, 45);
-  color: lightgray;
+  background-color: #11121c;
+  color: #bcb0b0;
   min-width: 500px;
+  margin: 10px;
 }
 
 .header {
   grid-area: header;
+  letter-spacing: 2px;
+  font-size: 50px;
+  padding: 0 10px;
 }
 
 .App {
   display: grid;
   grid-template-columns: 40% 60%;
   grid-template-rows: 10vh 15vh 75vh;
-  font-family: sans-serif;
   grid-template-areas: 
     'header options'
     'game-stats score'
     'game-board game-board';
+  grid-gap: 10px;
 }
 
 @media screen and (min-width: 768px) {

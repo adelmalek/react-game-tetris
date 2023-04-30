@@ -245,7 +245,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <h1 className='header'>Tetris {this.state.gameOver? '(GAME OVER)' :  ''}</h1>
+        <h1 className='header'>Tetris {this.state.gameOver? 'GAME OVER' :  ''}</h1>
         <GameBoard board={this.getBoardContent()}/>
         <Options onStart={this.startGame} onPause={this.togglePause}/>
         <GameStats board={this.getNextItemContent()}/>

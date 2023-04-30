@@ -2,12 +2,19 @@
     grid-area: options;
 }
 
+.buttons-div {
+    display: flex;
+    justify-content: center;
+}
+
 button {
     width: 110px;
     padding: 10px;
-    margin: 6px;
+    margin: 10px;
     text-align: center;
+    font-size: 15px;
     font-weight: 700;
+    letter-spacing: 1.5px;
     cursor: pointer;
     display: inline-block;
     background-color: transparent;
@@ -16,12 +23,12 @@ button {
 }
 
 .start-button {
-    border: 3px solid lightskyblue;
-    color: lightskyblue;
+    border: 3px solid #f299fb;
+    color: #f299fb;
 }
 
 .start-button:hover {
-    box-shadow: 0 0 10px 0 lightskyblue inset, 0 0 20px 2px lightskyblue;
+    box-shadow: 0 0 10px 0 #f299fb inset, 0 0 20px 2px #f299fb;
 }
 
 .pause-button {
