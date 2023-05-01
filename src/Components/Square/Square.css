@@ -1,11 +1,11 @@
 :root {
-    --cyan: #81ffff;
-    --blue: #8181ff;
-    --orange: #ffc481;
-    --yellow: #ffff81;
-    --green: #81ff81;
-    --purple: #ff81ff;
-    --red: #ff8181;
+    --lightblue: #83EEFF;
+    --blue: #0900ff;
+    --orange: #ff3c00;
+    --yellow: #ffff00;
+    --green: #39FF14;
+    --magenta: magenta;
+    --red: red;
 }
 
 .tetromino-square {
@@ -19,8 +19,8 @@
 }
 
 .tetromino-square.I {
-    background-color: var(--cyan);
-    border-color: var(--cyan);
+    background-color: var(--lightblue);
+    border-color: var(--lightblue);
 }
 
 .tetromino-square.J {
@@ -44,8 +44,8 @@
 }
 
 .tetromino-square.T {
-    background-color: var(--purple);
-    border-color: var(--purple);
+    background-color: var(--magenta);
+    border-color: var(--magenta);
 }
 
 .tetromino-square.Z {
